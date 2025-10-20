@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MCQs Master.PAK - Your ultimate platform for competitive exam preparation with categorized MCQs." />
+  <meta name="keywords" content="MCQs, competitive exams, General Knowledge, Pakistan Studies, Islamic Studies, Everyday Science, Computer, Current Affairs" />
+  <meta name="author" content="MCQs Master.PAK" />
+  <title>MCQs Master.PAK - Online MCQs</title>
+  <!-- Google Analytics Placeholder -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR-GA-ID');
+  </script> -->
+  <!-- Google AdSense Placeholder -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ADSENSE-ID" crossorigin="anonymous"></script> -->
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #87d194;
+      color: #333;
+    }
+    header { 
+      background: linear-gradient(135deg, #004d00, #00b300); 
+      color: #ffffff; 
+      padding: 40px 20px; 
+      text-align: center; 
+    }
+    header h1 { margin: 0; font-size: 42px; font-weight: bold; }
+    header h1 span { color: #00ff00; }
+    header p { margin-top: 10px; font-size: 40px; color: #f0f0f0; }
+
+    nav { 
+      background: #ffffff; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 10px 15px; 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+      box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+      white-space: nowrap; /* Prevent wrapping */
+    }
+    .logo { 
+      font-size: 20px; 
+      font-weight: bold; 
+      color: #006600; 
+      white-space: nowrap; 
+      margin-right: 10px; 
+      flex-shrink: 0; /* Prevent logo from shrinking */
+    }
+    .logo span { color: #00b300; }
+    .menu { 
+      display: flex; 
+      gap: 8px; 
+      align-items: center; 
+      flex-grow: 1; 
+      justify-content: flex-end; 
+      flex-shrink: 0; /* Prevent menu items from shrinking too much */
+    }
+
+    .menu a { 
+      background: #fff; 
+      color: #006600; 
+      text-decoration: none; 
+      font-size: 14px; 
+      font-weight: 600; 
+      padding: 5px 10px;
+      border-radius: 6px; 
+      transition: 0.3s; 
+      white-space: nowrap; 
+      flex-shrink: 0; 
+    }
+    .menu a:hover { background: #00b300; color: #fff; }
+
+    .menu .quiz-btn {
+      background: #00b300;
+      color: #fff !important;
+      border: 2px solid #006600;
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-weight: bold;
+      transition: 0.3s;
+      flex-shrink: 0;
+    }
+    .menu .quiz-btn:hover {
+      background: #006600;
+      border-color: #00ff00;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .menu #mcqSearch {
+      padding: 5px 8px; 
+      border-radius: 6px; 
+      border: 1px solid #030503; 
+      margin-left: 10px;
+      max-width: 150px; 
+      width: auto; 
+      box-sizing: border-box; 
+      flex-shrink: 0; 
+    }
+    .menu #searchButton, .menu #nightModeBtn, .menu #adminLoginBtn {
+      margin-left: 8px; 
+      padding: 5px 10px; 
+      border-radius: 6px; 
+      border: none; 
+      background: #006600; 
+      color: #fff; 
+      cursor: pointer;
+      white-space: nowrap; 
+      font-size: 14px;
+      flex-shrink: 0; 
+    }
+
+    .content { 
+      margin: 30px auto; 
+      padding: 30px; 
+      border-radius: 15px; 
+      text-align: center; 
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.1); 
+      scroll-margin-top: 100px;
+      max-width: 1000px; 
+      width: calc(100% - 40px); 
+      box-sizing: border-box; 
+    }
+
+    #home { 
+      background: #ffffff; 
+      border: 2px solid #00b300; 
+      box-shadow: 0 4px 20px rgba(0, 128, 0, 0.25); 
+      border-radius: 15px; 
+    }
+
+    #subjects { background: #c8f5c8; }
+    #subjects h2, .mcq-form h2 { color: #004d00; margin-bottom: 20px; font-size: 28px; border-bottom: 2px solid #00b300; display: inline-block; padding-bottom: 5px; }
+    .welcome-text { font-size: 20px; line-height: 1.6; color: #444; font-weight: 500; }
+
+    .services-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 20px; 
+      margin-top: 20px; 
+    }
+    .service-card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); text-align: center; transition: 0.3s; cursor: pointer; text-decoration: none; color: #000; }
+    .service-card:hover { border: 2px solid #00b300; box-shadow: 0px 6px 20px rgba(0, 179, 0, 0.3); transform: translateY(-5px); }
+    .service-card h3 { color: #004d00; margin-bottom: 10px; font-size: 20px; }
+    .service-card p { font-size: 14px; color: #444; }
+
+    .mcq-form { margin-top: 40px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0px 4px 20px rgba(0,0,0,0.15); text-align: left; }
+    .mcq-form h2 { text-align: center; display: block; width: 100%; }
+    .mcq-form form { display: flex; flex-direction: column; gap: 15px; }
+    .mcq-form label { font-weight: 600; color: #004d00; }
+    .mcq-form input, .mcq-form select, .mcq-form textarea, .mcq-form button { padding: 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; width: 100%; }
+    .mcq-form textarea { resize: vertical; }
+    .mcq-form button { background: #00b300; color: #fff; font-weight: bold; border: none; cursor: pointer; transition: 0.3s; }
+    .mcq-form button:hover { background: #006600; }
+
+    .radio-inline { display: flex; align-items: center; gap: 20px; margin-top: 8px; flex-wrap: wrap; }
+    .radio-inline label { font-weight: 600; color: #004d00; display: flex; align-items: center; gap: 5px; cursor: pointer; font-size: 16px; }
+    .radio-inline input[type="radio"] { transform: scale(1.1); margin-left: 2px; width: auto; }
+
+    .confirmation { margin-top: 25px; padding: 20px; border: 2px solid #00b300; border-radius: 10px; background: #f0fff0; box-shadow: 0px 4px 10px rgba(0,128,0,0.2); position: relative; }
+    .confirmation h3 { color: #004d00; margin-bottom: 10px; }
+    .confirmation ul { list-style: none; padding: 0; }
+    .confirmation li { margin-bottom: 5px; }
+    .confirmation .correct { font-weight: bold; color: #006600; }
+    .confirmation .user-name { position: absolute; top: 10px; right: 15px; font-weight: bold; color: #004d00; }
+    .tick { color: green; font-size: 22px; font-weight: bold; margin-left: 10px; }
+
+    #adminModal { 
+      display: none; 
+      position: fixed; 
+      top: 0; left: 0; width: 100%; height: 100%; 
+      background: rgba(0,0,0,0.7); 
+      z-index: 200; 
+      justify-content: center; 
+      align-items: center; 
+    }
+    #adminModal .modal-content {
+      background: #fff; 
+      padding: 30px; 
+      border-radius: 15px; 
+      width: 600px; 
+      max-width: 90%;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+      text-align: left;
+      position: relative;
+    }
+    #adminModal .modal-content h2 { text-align: center; color: #004d00; }
+    #adminModal .modal-content button { width: 100%; margin-top: 15px; }
+    #adminModal .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #444;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #adminModal .close-btn:hover { color: red; }
+    .mcq-item { border-bottom: 1px solid #ccc; padding: 10px 0; }
+    .mcq-item button { width: auto; margin: 5px; }
+
+    #registrationModal { 
+      display: none; 
+      position: fixed; 
+      top: 0; left: 0; width: 100%; height: 100%; 
+      background: rgba(0,0,0,0.7); 
+      z-index: 200; 
+      justify-content: center; 
+      align-items: center; 
+    }
+    #registrationModal .modal-content {
+      background: #fff; 
+      padding: 30px; 
+      border-radius: 15px; 
+      width: 400px; 
+      max-width: 90%;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+      text-align: left;
+      position: relative;
+    }
+    #registrationModal .modal-content h2 { text-align: center; color: #004d00; }
+    #registrationModal .modal-content button { width: 100%; margin-top: 15px; }
+
+    #registrationModal .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #444;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #registrationModal .close-btn:hover { color: red; }
+
+    footer { background: #222; color: #fff; text-align: center; padding: 20px; margin-top: 20px; font-size: 14px; }
+    footer span { color: #00ff00; font-weight: bold; }
+
+    .dark-mode { background: #121212; color: #f0f0f0; }
+    .dark-mode header { background: #003300; color: #fff; }
+    .dark-mode nav { background: #1b1b1b; color: #fff; }
+    .dark-mode .menu a { color: #fff; background: #333; }
+    .dark-mode .menu a:hover { background: #00b300; color: #fff; }
+    .dark-mode .content, 
+    .dark-mode .mcq-form, 
+    .dark-mode #home, 
+    .dark-mode #subjects, 
+    .dark-mode .service-card,
+    .dark-mode #registrationModal .modal-content,
+    .dark-mode #adminModal .modal-content { 
+      background: #345040; 
+      color: #f0f0f0; 
+      border-color: #00b300; 
+    }
+    .dark-mode .confirmation { background: #2a2a2a; border-color: #00ff00; color: #fff; }
+    .dark-mode input, 
+    .dark-mode select, 
+    .dark-mode textarea, 
+    .dark-mode button { background: #333; color: #fff; border: 1px solid #555; }
+    .dark-mode h1, 
+    .dark-mode h2, 
+    .dark-mode h3, 
+    .dark-mode p, 
+    .dark-mode label, 
+    .dark-mode .welcome-text, 
+    .dark-mode .service-card h3, 
+    .dark-mode .service-card p {
+      color: #ffffff !important;
+    }
+    .dark-mode .menu .quiz-btn {
+      background: #00b300 !important;
+      color: #ffffff !important;
+      border: 2px solid #00ff00 !important;
+    }
+    .dark-mode .menu .quiz-btn:hover {
+      background: #006600 !important;
+      color: #ffffff !important;
+      border: 2px solid #00ff99 !important;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 1200px) {
+      nav { padding: 8px 10px; }
+      .logo { font-size: 18px; }
+      .menu a { font-size: 13px; padding: 4px 8px; }
+      .menu #mcqSearch { max-width: 120px; padding: 4px 6px; font-size: 13px; }
+      .menu #searchButton, .menu #nightModeBtn, .menu #adminLoginBtn { padding: 4px 8px; font-size: 13px; }
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 32px; }
+      header p { font-size: 28px; }
+      nav { padding: 6px 8px; }
+      .logo { font-size: 16px; }
+      .menu a { font-size: 12px; padding: 3px 6px; }
+      .menu #mcqSearch { max-width: 100px; padding: 3px 5px; font-size: 12px; }
+      .menu #searchButton, .menu #nightModeBtn, .menu #adminLoginBtn { padding: 3px 6px; font-size: 12px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-card:last-child { grid-column: auto; }
+      .content { padding: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 28px; }
+      header p { font-size: 20px; }
+      nav { padding: 5px 6px; }
+      .logo { font-size: 14px; }
+      .menu a { font-size: 11px; padding: 2px 5px; }
+      .menu #mcqSearch { max-width: 80px; padding: 2px 4px; font-size: 11px; }
+      .menu #searchButton, .menu #nightModeBtn, .menu #adminLoginBtn { padding: 2px 5px; font-size: 11px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card:last-child { grid-column: auto; }
+      .mcq-form { padding: 15px; }
+      .radio-inline { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MCQs Master.<span>PAK</span></h1>
+    <p>Your ultimate platform to prepare for competitive exams and tests</p>
+  </header>
+
+  <nav>
+    <div class="logo">MCQs Master.<span>PAK</span></div>
+    <div class="menu">
+      <a href="#home">Home</a>
+      <a href="#subjects">Subjects</a>
+      <a href="gk/gkmcqssection.html" target="_blank">GK</a>
+      <a href="pakstudies/pakstudiessmcqssection.html" target="_blank">Pak Studies</a>
+      <a href="islamicstudies/islamicstudiesmcqssection.html" target="_blank">Islamiat</a>
+      <a href="everydayscience/everydaysciencemcqssection.html" target="_blank">Science</a>
+      <a href="computer/computermcqssection.html" target="_blank">Computer</a>
+      <a href="currentaffairs/currentaffairsmcqssection.html" target="_blank">Current Affairs</a>
+      <a href="others/othersmcqssection.html" target="_blank">Others</a>
+      <a href="quiz.html" class="quiz-btn">Quiz</a>
+      <input type="text" id="mcqSearch" placeholder="Search MCQs...">
+      <button id="searchButton">Search</button>
+      <button id="nightModeBtn">🌙 Night Mode</button>
+      <button id="adminLoginBtn">Admin Login</button>
+    </div>
+  </nav>
+
+  <div class="content" id="home">
+    <h2>Welcome to MCQs Master.PAK</h2>
+    <p class="welcome-text">
+      Here you will find categorized MCQs of <b>General Knowledge</b>, <b>Pakistan Studies</b>, 
+      <b>Islamic Studies</b>, <b>Everyday Science</b>, <b>Computer</b>, <b>Current Affairs</b> and <b>Others</b> 
+      to help you prepare for exams and tests effectively.
+    </p>
+  </div>
+
+  <div class="content" id="subjects">
+    <h2>Our Subjects</h2>
+    <div class="services-grid">
+      <a href="gk/gkmcqssection.html" target="_blank" class="service-card">
+        <h3>General Knowledge</h3>
+        <p>World GK, Capitals, Personalities, Important Events and more.</p>
+      </a>
+      <a href="pakstudies/pakstudiessmcqssection.html" target="_blank" class="service-card">
+        <h3>Pakistan Studies</h3>
+        <p>History of Pakistan, Constitutions, Geography and National Movements.</p>
+      </a>
+      <a href="islamicstudies/islamicstudiesmcqssection.html" target="_blank" class="service-card">
+        <h3>Islamic Studies</h3>
+        <p>Quran, Hadith, Prophets, Islamic History, Battles and Teachings.</p>
+      </a>
+      <a href="everydayscience/everydaysciencemcqssection.html" target="_blank" class="service-card">
+        <h3>Everyday Science</h3>
+        <p>Physics, Chemistry, Biology, Discoveries and Scientific Inventions.</p>
+      </a>
+      <a href="computer/computermcqssection.html" target="_blank" class="service-card">
+        <h3>Computer</h3>
+        <p>Computer Basics, MS Office, Internet, IT and Programming MCQs.</p>
+      </a>
+      <a href="currentaffairs/currentaffairsmcqssection.html" target="_blank" class="service-card">
+        <h3>Current Affairs</h3>
+        <p>National and International Current Affairs, Latest Updates.</p>
+      </a>
+      <a href="others/othersmcqssection.html" target="_blank" class="service-card">
+        <h3>Others</h3>
+        <p>Miscellaneous MCQs from Math, English, Current Affairs and more.</p>
+      </a>
+    </div>
+
+    <div class="mcq-form">
+      <h2><u>Add New MCQs</u></h2>
+      <form id="mcqForm">
+        <label for="subject">Select Subject:</label>
+        <select id="subject" name="subject" required>
+          <option value="">-- Choose Subject --</option>
+          <option value="gk">General Knowledge</option>
+          <option value="pakstudies">Pakistan Studies</option>
+          <option value="islamiat">Islamic Studies</option>
+          <option value="science">Everyday Science</option>
+          <option value="computer">Computer</option>
+          <option value="currentaffairs">Current Affairs</option>
+          <option value="others">Others</option>
+        </select>
+
+        <label for="question">Question:</label>
+        <textarea id="question" name="question" rows="3" placeholder="Write a question here..." required></textarea>
+
+        <label>Options:</label>
+        <input type="text" id="option1" name="option1" placeholder="Option 1" required>
+        <input type="text" id="option2" name="option2" placeholder="Option 2" required>
+        <input type="text" id="option3" name="option3" placeholder="Option 3" required>
+        <input type="text" id="option4" name="option4" placeholder="Option 4" required>
+
+        <label for="details">More Details:</label>
+        <textarea id="details" name="details" rows="3" placeholder="Write more details about this MCQ..." required></textarea>
+
+        <div class="radio-inline">
+          <label style="margin-right:10px;">Select Correct Option:</label>
+          <label for="correct1">A <input type="radio" id="correct1" name="correct" value="1" required></label>
+          <label for="correct2">B <input type="radio" id="correct2" name="correct" value="2"></label>
+          <label for="correct3">C <input type="radio" id="correct3" name="correct" value="3"></label>
+          <label for="correct4">D <input type="radio" id="correct4" name="correct" value="4"></label>
+        </div>
+
+        <button type="submit">Add MCQ</button>
+      </form>
+
+      <div id="confirmationArea"></div>
+    </div>
+  </div>
+
+  <!-- Registration Modal -->
+  <div id="registrationModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>User Registration</h2>
+      <form id="regForm">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name..." required>
+
+        <label for="mobile">Mobile Number:</label>
+        <div style="display:flex; gap:5px;">
+          <select id="countryCode" required>
+            <option value="+92300">+92300</option>
+            <option value="+92301">+92301</option>
+            <option value="+92302">+92302</option>
+            <option value="+92303">+92303</option>
+            <option value="+92304">+92304</option>
+            <option value="+92305">+92305</option>
+            <option value="+92306">+92306</option>
+            <option value="+92307">+92307</option>
+            <option value="+92308">+92308</option>
+            <option value="+92309">+92309</option>
+          </select>
+          <input type="text" id="mobile" name="mobile" placeholder="Enter mobile number..." required pattern="[0-9]{7}">
+        </div>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Choose a username..." required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password..." required minlength="6">
+
+        <label for="confirmpassword">Confirm Password:</label>
+        <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Re-enter password..." required minlength="6">
+
+        <button type="submit">Register</button>
+      </form>
+      <div id="regConfirmation"></div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div id="adminModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Admin Login</h2>
+      <form id="adminForm">
+        <label for="adminUsername">Username:</label>
+        <input type="text" id="adminUsername" name="adminUsername" placeholder="Enter admin username..." required>
+        <label for="adminPassword">Password:</label>
+        <input type="password" id="adminPassword" name="adminPassword" placeholder="Enter admin password..." required>
+        <button type="submit">Login</button>
+      </form>
+      <div id="adminMcqs"></div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; <span id="currentYear"></span> MCQs Master.<span>PAK</span> | All rights reserved
+  </footer>
+
+  <script>
+    // Initialize year in footer
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    // Function to convert string to title case
+    function toTitleCase(str) {
+      return str
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    }
+
+    // Apply title case on blur for MCQ form fields
+    const fieldsToTitleCase = ['question', 'option1', 'option2', 'option3', 'option4', 'details'];
+    fieldsToTitleCase.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.addEventListener('blur', () => {
+          element.value = toTitleCase(element.value.trim());
+        });
+      }
+    });
+
+    // Night Mode Toggle
+    const nightBtn = document.getElementById("nightModeBtn");
+    nightBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+    });
+
+    // Load dark mode preference
+    if (localStorage.getItem("darkMode") === "true") {
+      document.body.classList.add("dark-mode");
+    }
+
+    // MCQ Form Submission with Registration Check
+    const mcqForm = document.getElementById("mcqForm");
+    const confirmationArea = document.getElementById("confirmationArea");
+    const registrationModal = document.getElementById("registrationModal");
+    mcqForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const userName = localStorage.getItem("userName");
+
+      // Check if user is registered
+      if (!userName) {
+        registrationModal.style.display = "flex";
+        confirmationArea.innerHTML = `<p style="color:red; font-weight:bold;">Please register first to add MCQs!</p>`;
+        return;
+      }
+
+      // Proceed with MCQ submission if registered
+      const subjectSelect = document.getElementById("subject");
+      const subject = subjectSelect.options[subjectSelect.selectedIndex].text;
+      const question = toTitleCase(document.getElementById("question").value.trim());
+      const option1 = toTitleCase(document.getElementById("option1").value.trim());
+      const option2 = toTitleCase(document.getElementById("option2").value.trim());
+      const option3 = toTitleCase(document.getElementById("option3").value.trim());
+      const option4 = toTitleCase(document.getElementById("option4").value.trim());
+      const details = toTitleCase(document.getElementById("details").value.trim());
+      const correct = document.querySelector('input[name="correct"]:checked')?.value;
+
+      if (!correct) {
+        confirmationArea.innerHTML = `<p style="color:red; font-weight:bold;">Please select the correct option!</p>`;
+        return;
+      }
+
+      const mcqData = {
+        id: Date.now(),
+        subject: subjectSelect.value,
+        subjectText: subject,
+        question,
+        options: [option1, option2, option3, option4],
+        details,
+        correct,
+        status: 'pending',
+        submittedBy: userName
+      };
+
+      let pendingMcqs = JSON.parse(localStorage.getItem("pendingMcqs") || "[]");
+      pendingMcqs.push(mcqData);
+      localStorage.setItem("pendingMcqs", JSON.stringify(pendingMcqs));
+
+      confirmationArea.innerHTML = `<div class="confirmation">
+        <h3>MCQ Submitted for Approval ✅</h3>
+        <span class="user-name">Submitted by: ${userName}</span>
+        <ul>
+          <li><b>Subject:</b> ${subject}</li>
+          <li><b>Question:</b> ${question}</li>
+          <li><b>Options:</b> ${option1}, ${option2}, ${option3}, ${option4}</li>
+          <li><b>Correct Option:</b> <span class="correct">${correct}</span></li>
+          <li><b>Details:</b> ${details}</li>
+        </ul>
+        <p>Waiting for admin approval...</p>
+      </div>`;
+      mcqForm.reset();
+      subjectSelect.value = mcqData.subject;
+    });
+
+    // Admin Login and MCQ Approval
+    const adminModal = document.getElementById("adminModal");
+    const adminForm = document.getElementById("adminForm");
+    const adminMcqs = document.getElementById("adminMcqs");
+    const adminLoginBtn = document.getElementById("adminLoginBtn");
+    const adminCloseBtn = adminModal.querySelector(".close-btn");
+
+    adminLoginBtn.addEventListener("click", () => {
+      adminModal.style.display = "flex";
+    });
+
+    adminCloseBtn.addEventListener("click", () => {
+      adminModal.style.display = "none";
+      adminMcqs.innerHTML = "";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === adminModal) adminModal.style.display = "none";
+    });
+
+    adminForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("adminUsername").value.trim();
+      const password = document.getElementById("adminPassword").value.trim();
+
+      if (username === "admin" && password === "admin123") {
+        localStorage.setItem("isAdmin", "true");
+        displayPendingMcqs();
+        adminForm.reset();
+      } else {
+        adminMcqs.innerHTML = `<p style="color:red; font-weight:bold;">Invalid credentials!</p>`;
+      }
+    });
+
+    function displayPendingMcqs() {
+      const pendingMcqs = JSON.parse(localStorage.getItem("pendingMcqs") || "[]");
+      adminMcqs.innerHTML = "<h3>Pending MCQs for Approval</h3>";
+      if (pendingMcqs.length === 0) {
+        adminMcqs.innerHTML += "<p>No pending MCQs.</p>";
+        return;
+      }
+
+      pendingMcqs.forEach(mcq => {
+        adminMcqs.innerHTML += `
+          <div class="mcq-item">
+            <p><b>Subject:</b> ${mcq.subjectText}</p>
+            <p><b>Question:</b> ${mcq.question}</p>
+            <p><b>Options:</b> ${mcq.options.join(", ")}</p>
+            <p><b>Correct:</b> ${mcq.correct}</p>
+            <p><b>Details:</b> ${mcq.details}</p>
+            <p><b>Submitted by:</b> ${mcq.submittedBy}</p>
+            <button onclick="approveMcq(${mcq.id})">Approve</button>
+            <button onclick="rejectMcq(${mcq.id})">Reject</button>
+          </div>`;
+      });
+    }
+
+    window.approveMcq = function(id) {
+      let pendingMcqs = JSON.parse(localStorage.getItem("pendingMcqs") || "[]");
+      let approvedMcqs = JSON.parse(localStorage.getItem("approvedMcqs") || "{}");
+      const mcq = pendingMcqs.find(m => m.id === id);
+      if (!mcq) return;
+
+      if (!approvedMcqs[mcq.subject]) approvedMcqs[mcq.subject] = [];
+      approvedMcqs[mcq.subject].push({ ...mcq, status: 'approved' });
+
+      const pages = Math.ceil(approvedMcqs[mcq.subject].length / 25);
+      localStorage.setItem("approvedMcqs", JSON.stringify(approvedMcqs));
+
+      pendingMcqs = pendingMcqs.filter(m => m.id !== id);
+      localStorage.setItem("pendingMcqs", JSON.stringify(pendingMcqs));
+
+      adminMcqs.innerHTML = `<p style="color:green; font-weight:bold;">MCQ Approved!</p>`;
+      setTimeout(displayPendingMcqs, 1000);
+    };
+
+    window.rejectMcq = function(id) {
+      let pendingMcqs = JSON.parse(localStorage.getItem("pendingMcqs") || "[]");
+      pendingMcqs = pendingMcqs.filter(m => m.id !== id);
+      localStorage.setItem("pendingMcqs", JSON.stringify(pendingMcqs));
+      adminMcqs.innerHTML = `<p style="color:red; font-weight:bold;">MCQ Rejected!</p>`;
+      setTimeout(displayPendingMcqs, 1000);
+    };
+
+    // Registration Modal logic
+    const regForm = document.getElementById("regForm");
+    const regConfirmation = document.getElementById("regConfirmation");
+    const closeBtn = document.querySelector("#registrationModal .close-btn");
+
+    document.querySelector(".quiz-btn").addEventListener("click", function(e) {
+      e.preventDefault();
+      registrationModal.style.display = "flex";
+    });
+
+    closeBtn.addEventListener("click", () => {
+      registrationModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === registrationModal) registrationModal.style.display = "none";
+    });
+
+    regForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      let fullname = document.getElementById("fullname").value.trim();
+      let mobile = document.getElementById("mobile").value.trim();
+      let countryCode = document.getElementById("countryCode").value;
+      let username = document.getElementById("username").value.trim();
+      let password = document.getElementById("password").value.trim();
+      let confirmpassword = document.getElementById("confirmpassword").value.trim();
+
+      if (password !== confirmpassword) {
+        regConfirmation.innerHTML = `<p style="color:red; font-weight:bold;">Passwords do not match!</p>`;
+        return;
+      }
+
+      let fullMobile = countryCode + mobile;
+      localStorage.setItem("userName", fullname);
+      localStorage.setItem("userMobile", fullMobile);
+      localStorage.setItem("userUsername", username);
+
+      regConfirmation.innerHTML = `<p style="color:green; font-weight:bold;">Registration Successful! Welcome, ${fullname}</p>`;
+      setTimeout(() => {
+        registrationModal.style.display = "none";
+        regConfirmation.innerHTML = "";
+      }, 1500);
+    });
+
+    // Search Functionality
+    const searchInput = document.getElementById("mcqSearch");
+    const searchBtn = document.getElementById("searchButton");
+    searchInput.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        performSearch();
+      }
+    });
+    if (searchBtn) {
+      searchBtn.addEventListener("click", performSearch);
+    }
+
+    async function performSearch() {
+      const query = searchInput.value.trim().toLowerCase();
+      let resultsContainer = document.getElementById("searchResults");
+      if (!resultsContainer) {
+        resultsContainer = document.createElement("div");
+        resultsContainer.id = "searchResults";
+        resultsContainer.style.marginTop = "25px";
+        resultsContainer.style.padding = "15px";
+        resultsContainer.style.border = "2px solid #00b300";
+        resultsContainer.style.borderRadius = "10px";
+        resultsContainer.style.background = "#f8fff8";
+        resultsContainer.style.maxWidth = "1000px";
+        resultsContainer.style.margin = "30px auto";
+        document.querySelector('footer').insertAdjacentElement("beforebegin", resultsContainer);
+      }
+
+      resultsContainer.innerHTML = "";
+      if (!query) {
+        resultsContainer.innerHTML = `<div class="confirmation"><h3 style="color:#c0392b">Please enter a keyword to search 🔎</h3></div>`;
+        return;
+      }
+
+      resultsContainer.innerHTML = `<div class="confirmation"><h3>Searching all pages for "<b>${query}</b>"...</h3></div>`;
+
+      let found = false;
+      let combinedResults = "";
+      const pagesToSearch = [
+        "index.html",
+        "gk/gkmcqssection.html",
+        "pakstudies/pakstudiessmcqssection.html",
+        "islamicstudies/islamicstudiesmcqssection.html",
+        "everydayscience/everydaysciencemcqssection.html",
+        "computer/computermcqssection.html",
+        "currentaffairs/currentaffairsmcqssection.html",
+        "others/othersmcqssection.html"
+      ];
+
+      for (const page of pagesToSearch) {
+        try {
+          const response = await fetch(page);
+          const text = await response.text();
+          const lowerText = text.toLowerCase();
+
+          if (lowerText.includes(query)) {
+            found = true;
+            const snippetIndex = lowerText.indexOf(query);
+            const snippet = text.substring(
+              Math.max(0, snippetIndex - 80),
+              Math.min(text.length, snippetIndex + 120)
+            );
+
+            combinedResults += `
+              <div style="border-bottom:1px solid #ccc; padding:10px 0;">
+                <h4>📄 Found in <a href="${page}" target="_blank">${page}</a></h4>
+                <p>${snippet.replace(new RegExp(query, "gi"), match => `<mark>${match}</mark>`)}</p>
+              </div>`;
+          }
+        } catch (err) {
+          console.error("Error fetching or parsing:", page, err);
+        }
+      }
+
+      const approvedMcqs = JSON.parse(localStorage.getItem("approvedMcqs") || "{}");
+      Object.keys(approvedMcqs).forEach(subject => {
+        approvedMcqs[subject].forEach(mcq => {
+          if (
+            mcq.question.toLowerCase().includes(query) ||
+            mcq.options.some(opt => opt.toLowerCase().includes(query)) ||
+            mcq.details.toLowerCase().includes(query)
+          ) {
+            found = true;
+            combinedResults += `
+              <div style="border-bottom:1px solid #ccc; padding:10px 0;">
+                <h4>📄 Found in ${mcq.subjectText}</h4>
+                <p><b>Question:</b> ${mcq.question.replace(new RegExp(query, "gi"), match => `<mark>${match}</mark>`)}</p>
+                <p><b>Options:</b> ${mcq.options.join(", ").replace(new RegExp(query, "gi"), match => `<mark>${match}</mark>`)}</p>
+                <p><b>Details:</b> ${mcq.details.replace(new RegExp(query, "gi"), match => `<mark>${match}</mark>`)}</p>
+              </div>`;
+          }
+        });
+      });
+
+      if (found) {
+        resultsContainer.innerHTML = `
+          <div class="confirmation">
+            <h3>✅ Results Found for "<b>${query}</b>":</h3>
+            ${combinedResults}
+          </div>`;
+      } else {
+        resultsContainer.innerHTML = `
+          <div class="confirmation">
+            <h3>❌ No Match Found</h3>
+            <p>No page or MCQ contains "<b>${query}</b>".</p>
+          </div>`;
+      }
+    }
+  </script>
+</body>
+</html>
