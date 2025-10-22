@@ -100,7 +100,7 @@ function submitQuiz() {
 
   if (studentType === "center") {
     // Institute Students → save to Google Sheet
-    fetch("https://script.google.com/macros/s/AKfycbyo4oNxpeZ8j9NK66beVbBhQzWHI82hFf_DFmcijyB5buNkCI_DX-PfdgyFrLYtT_IQ/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxMfxbdYtQOeYOL2HjvMCCuKZWKErulFiezCWp4ISaQLAdDpN6CmH0qvZLwudGill_f/exec", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: studentName, score: score, type: studentType })
