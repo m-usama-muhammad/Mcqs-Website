@@ -37,6 +37,8 @@ button:hover { background:#218838; }
 <body>
 <div class="quiz-container">
 <h1>Quiz</h1>
+
+<!-- Step 1: Name + Type -->
 <div id="nameBox" style="text-align:center;">
 <label>Enter Your Name:</label><br><br>
 <input type="text" id="studentName" placeholder="Enter Your Full Name"
@@ -46,6 +48,7 @@ style="padding:8px; width:70%; max-width:300px; border-radius:6px; border:1px so
 <button type="button" onclick="startQuiz()">Start Quiz</button>
 </div>
 
+<!-- Step 2: Quiz -->
 <form id="quizForm" style="display:none; text-align:left; margin-top:20px;">
 <p>Q1: 2 + 2 = ?</p>
 <input type="radio" name="q1" value="3"> 3<br>
@@ -66,7 +69,7 @@ style="padding:8px; width:70%; max-width:300px; border-radius:6px; border:1px so
 <script>
 let studentName = "", studentType = "";
 
-// Start quiz
+// Step 1 — Start Quiz
 function startQuiz() {
   studentName = document.getElementById("studentName").value.trim();
   studentType = document.querySelector('input[name="studentType"]:checked')?.value;
@@ -84,7 +87,7 @@ function startQuiz() {
   document.getElementById("quizForm").style.display = "block";
 }
 
-// Submit quiz
+// Step 2 — Submit Quiz
 function submitQuiz() {
   let score = 0;
   const q1 = document.querySelector('input[name="q1"]:checked');
@@ -99,8 +102,10 @@ function submitQuiz() {
   if (q2.value === "Islamabad") score++;
 
   if (studentType === "center") {
-    // Institute Students → save to Google Sheet
-    fetch("https://script.google.com/macros/s/AKfycbzAtCb0sNwUqh0ny-7xGY_Mx7XP_EsLRkE65eQsvwaIffbvT35Vy31SfxoJT8O4oBtl/exec", {
+    // 🔹 Paste your Google Apps Script Web App URL below
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwluUfny3aiDfKRJoqUSHny97t3rw3jK26uB23yrKUzGHXzKTzzOnFYOHNysPrWy26d/exec"; // 👈 Only this line change karo!
+
+    fetch(scriptURL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: studentName, score: score, type: studentType })
@@ -120,7 +125,7 @@ function submitQuiz() {
   }
 }
 
-// Show thank-you message
+// Step 3 — Show result
 function showThankYou(score, showScore) {
   document.getElementById("quizForm").style.display = "none";
   const thankYou = document.getElementById("thankYou");
