@@ -102,9 +102,7 @@ function submitQuiz() {
   if (q2.value === "Islamabad") score++;
 
   if (studentType === "center") {
-    // 🔹 Paste your Google Apps Script Web App URL below
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwluUfny3aiDfKRJoqUSHny97t3rw3jK26uB23yrKUzGHXzKTzzOnFYOHNysPrWy26d/exec"; // 👈 Only this line change karo!
-
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyJ6OAqawNIETFm5yOLMaQXQQnb7iqu88lt92ZyhPNP3nWjBP0MFdXktrN5lQZSUYob/exec";
     fetch(scriptURL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -120,7 +118,6 @@ function submitQuiz() {
       showThankYou(score, false);
     });
   } else {
-    // Others → only show score
     showThankYou(score, true);
   }
 }
