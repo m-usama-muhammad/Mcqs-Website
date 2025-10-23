@@ -37,8 +37,6 @@ button:hover { background:#218838; }
 <body>
 <div class="quiz-container">
 <h1>Quiz</h1>
-
-<!-- Step 1: Name + Type -->
 <div id="nameBox" style="text-align:center;">
 <label>Enter Your Name:</label><br><br>
 <input type="text" id="studentName" placeholder="Enter Your Full Name"
@@ -47,29 +45,22 @@ style="padding:8px; width:70%; max-width:300px; border-radius:6px; border:1px so
 <label><input type="radio" name="studentType" value="other"> Others</label><br><br>
 <button type="button" onclick="startQuiz()">Start Quiz</button>
 </div>
-
-<!-- Step 2: Quiz -->
 <form id="quizForm" style="display:none; text-align:left; margin-top:20px;">
 <p>Q1: 2 + 2 = ?</p>
 <input type="radio" name="q1" value="3"> 3<br>
 <input type="radio" name="q1" value="4"> 4<br>
 <input type="radio" name="q1" value="5"> 5<br>
-
 <p>Q2: Capital of Pakistan?</p>
 <input type="radio" name="q2" value="Karachi"> Karachi<br>
 <input type="radio" name="q2" value="Islamabad"> Islamabad<br>
 <input type="radio" name="q2" value="Lahore"> Lahore<br><br>
-
 <button type="button" onclick="submitQuiz()">Submit Quiz</button>
 </form>
-
 <p id="thankYou"></p>
 </div>
-
 <script>
 let studentName = "", studentType = "";
 
-// Step 1 — Start Quiz
 function startQuiz() {
   studentName = document.getElementById("studentName").value.trim();
   studentType = document.querySelector('input[name="studentType"]:checked')?.value;
@@ -87,7 +78,6 @@ function startQuiz() {
   document.getElementById("quizForm").style.display = "block";
 }
 
-// Step 2 — Submit Quiz
 function submitQuiz() {
   let score = 0;
   const q1 = document.querySelector('input[name="q1"]:checked');
@@ -102,27 +92,25 @@ function submitQuiz() {
   if (q2.value === "Islamabad") score++;
 
   if (studentType === "center") {
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyJ6OAqawNIETFm5yOLMaQXQQnb7iqu88lt92ZyhPNP3nWjBP0MFdXktrN5lQZSUYob/exec";
-    fetch(scriptURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: studentName, score: score, type: studentType })
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log("Response:", data);
-      showThankYou(score, false);
-    })
-    .catch(err => {
-      console.error("Error:", err);
-      showThankYou(score, false);
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyJ6OAqawNIETFm5yOLMaQXQQnb7iqu88lt92ZyhPNP3nWjBP0MFdXktrN5uU0ZLg0tKGU98sQ3Ur/exec";
+    const params = new URLSearchParams({
+      name: studentName,
+      score: score,
+      type: studentType
     });
+    fetch(`${scriptURL}?${params.toString()}`)
+      .then(res => res.json())
+      .then(data => {
+        showThankYou(score, false);
+      })
+      .catch(err => {
+        showThankYou(score, false);
+      });
   } else {
     showThankYou(score, true);
   }
 }
 
-// Step 3 — Show result
 function showThankYou(score, showScore) {
   document.getElementById("quizForm").style.display = "none";
   const thankYou = document.getElementById("thankYou");
