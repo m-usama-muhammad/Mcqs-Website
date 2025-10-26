@@ -437,6 +437,47 @@
   &copy; 2025 MCQs Master.<span>PAK</span> | All rights reserved
 </footer>
 
+<!-- Registration Modal -->
+<div id="registrationModal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>User Registration</h2>
+    <form id="regForm">
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" placeholder="Enter your full name..." required>
+
+      <label for="mobile">Mobile Number:</label>
+      <div style="display:flex; gap:5px;">
+        <select id="countryCode" required>
+          <option value="+92300">+92300</option>
+          <option value="+92301">+92301</option>
+          <option value="+92302">+92302</option>
+          <option value="+92303">+92303</option>
+          <option value="+92304">+92304</option>
+          <option value="+92305">+92305</option>
+          <option value="+92306">+92306</option>
+          <option value="+92307">+92307</option>
+          <option value="+92308">+92308</option>
+          <option value="+92309">+92309</option>
+        </select>
+        <input type="text" id="mobile" name="mobile" placeholder="Enter mobile number..." required pattern="[0-9]{7}">
+      </div>
+
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="Choose a username..." required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter password..." required minlength="6">
+
+      <label for="confirmpassword">Confirm Password:</label>
+      <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Re-enter password..." required minlength="6">
+
+      <button type="submit">Register</button>
+    </form>
+    <div id="regConfirmation"></div>
+  </div>
+</div>
+
 <script>
   // Function to convert string to title case
   function toTitleCase(str) {
@@ -651,3 +692,4 @@ async function performSearch() {
 
 </body>
 </html>
+
