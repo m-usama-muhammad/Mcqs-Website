@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MCQs Master.PAK - Online MCQs</title>
   <style>
-    body {
+    /* ✅ ye sabse upar likhna hai */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background: #87d194;
@@ -241,44 +248,143 @@
       transform: scale(1.05);
     }
 
-    /* Media Queries for better responsiveness */
-    @media (max-width: 1200px) {
-        .menu {
-            justify-content: center; /* Center menu items when they wrap */
-            margin-top: 10px; /* Add space when logo and menu wrap */
-        }
-        nav {
-            flex-direction: column; /* Stack logo and menu vertically */
-            align-items: center;
-        }
-        .logo {
-            margin-bottom: 10px;
-            margin-right: 0;
-        }
+    /* === Base Styling for All Devices === */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 25px;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.menu a, .menu .quiz-btn {
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+#mcqSearch, #nightModeBtn {
+    margin-left: 10px;
+}
+
+
+/* === 1️⃣ Mobile: up to 480px === */
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
     }
 
-    @media (max-width: 768px) {
-        header h1 { font-size: 32px; }
-        header p { font-size: 28px; }
-        .menu a { padding: 4px 10px; font-size: 14px; }
-        .menu #mcqSearch { max-width: 100%; margin-left: 0; margin-top: 10px; }
-        .menu #nightModeBtn { margin-left: 0; margin-top: 10px; }
-        .services-grid { grid-template-columns: repeat(2, 1fr); }
-        .service-card:last-child { grid-column: auto; } /* Reset for smaller screens */
-        .content { padding: 20px; }
+    .logo {
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
     }
 
-    @media (max-width: 480px) {
-        header h1 { font-size: 28px; }
-        header p { font-size: 20px; }
-        .menu { flex-direction: column; gap: 5px; }
-        .menu a { width: 100%; text-align: center; }
-        .menu #mcqSearch, .menu #nightModeBtn { width: 100%; margin-left: 0; }
-        .services-grid { grid-template-columns: 1fr; }
-        .service-card:last-child { grid-column: auto; }
-        .mcq-form { padding: 15px; }
-        .radio-inline { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .menu {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
     }
+
+    .menu a, .menu .quiz-btn {
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    #mcqSearch, #nightModeBtn {
+        width: 100%;
+        margin: 6px 0;
+    }
+
+    body, nav {
+        overflow-x: hidden;
+    }
+}
+
+
+/* === 2️⃣ Tablet: 481px – 768px === */
+@media (min-width: 481px) and (max-width: 768px) {
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 12px 18px;
+    }
+
+    .logo {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .menu a, .menu .quiz-btn {
+        font-size: 14px;
+        padding: 7px 10px;
+    }
+
+    #mcqSearch, #nightModeBtn {
+        width: auto;
+    }
+}
+
+
+/* === 3️⃣ Small Laptops: 769px – 1024px === */
+@media (min-width: 769px) and (max-width: 1024px) {
+    nav {
+        padding: 14px 25px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .menu a, .menu .quiz-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+
+/* === 4️⃣ Desktops: 1025px and above === */
+@media (min-width: 1025px) {
+    nav {
+        padding: 16px 30px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .menu a, .menu .quiz-btn {
+        font-size: 15px;
+        padding: 10px 14px;
+    }
+}
+
   </style>
 </head>
 <body>
