@@ -565,6 +565,14 @@ style="padding:8px; width:70%; max-width:300px; border-radius:6px; border:1px so
 
 
 
+
+
+
+
+
+
+
+
 <script>
 let studentName = "", studentType = "";
 let totalTime = 60 * 60; // global timer
@@ -728,14 +736,24 @@ function showThankYou(score, showScore) {
   const thankYou = document.getElementById("thankYou");
   thankYou.style.display = "block";
 
-  if (studentType === "center") {
-    thankYou.innerText = `Thank You For Attempting The Quiz\n${studentName}\nYour quiz has been successfully submitted. The result will be shared with you shortly.`;
-  } else {
-    thankYou.innerText = `Thank You for attempting Quiz\n${studentName}\n\nResult:\nTotal Questions: 80\nCorrect Answers: ${score}\nWrong Answers: ${80 - score}`;
-  }
+if (studentType === "center") {
+  thankYou.innerHTML = `Thank You For Attempting The Quiz<br><br>${studentName}<br><br>Your quiz has been successfully submitted.<br>The result will be shared with you shortly.`;
+} else {
+  thankYou.innerText = `Thank You for attempting Quiz\n${studentName}\n\nResult:\nTotal Questions: 80\nCorrect Answers: ${score}\nWrong Answers: ${80 - score}`;
 }
+
+
+
+// 🔹 Auto submit if tab switch (cheating)
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    alert("Your quiz has been auto-submitted due to cheating detected!");
+    submitQuiz(true);
+  }
+});
+
+
 </script>
 
 </body>
 </html>
-
