@@ -729,7 +729,7 @@ function showThankYou(score, showScore) {
   thankYou.style.display = "block";
 
   if (studentType === "center") {
-    thankYou.innerText = `Thank You For Attempting The Quiz\n${studentName}\nYour response has been recorded.`;
+    thankYou.innerText = `Thank You For Attempting The Quiz\n${studentName}\nYour quiz has been successfully submitted. The result will be shared with you shortly.`;
   } else {
     thankYou.innerText = `Thank You for attempting Quiz\n${studentName}\n\nResult:\nTotal Questions: 80\nCorrect Answers: ${score}\nWrong Answers: ${80 - score}`;
   }
@@ -738,3 +738,4 @@ function showThankYou(score, showScore) {
 
 </body>
 </html>
+
